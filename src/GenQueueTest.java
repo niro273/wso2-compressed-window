@@ -22,46 +22,49 @@ class GenQueue<compressedData> {
 
 public class GenQueueTest {
     public static void main(String[] args) {
-        GenQueue<Employee> empList;
-        empList = new GenQueue<Employee>();
-        GenQueue<HourlyEmployee> hList;
-        hList = new GenQueue<HourlyEmployee>();
-        hList.enqueue(new HourlyEmployee("T", "D"));
-        hList.enqueue(new HourlyEmployee("G", "B"));
-        hList.enqueue(new HourlyEmployee("F", "S"));
-        empList.addItems(hList);
+        GenQueue<CompressedData> empList;
+        empList = new GenQueue<CompressedData>();
+        GenQueue<CompressedData> compressedList;
+
+
+        compressedList = new GenQueue<CompressedData>();
+        compressedList.enqueue(new CompressedData());
+        compressedList.enqueue(new CompressedData());
+        compressedList.enqueue(new CompressedData());
+        empList.addItems(compressedList);
         System.out.println("The employees' names are:");
+
         while (empList.hasItems()) {
-            Employee emp = empList.dequeue();
-            System.out.println(emp.firstName + " "
-                    + emp.lastName);
+            CompressedData compressedData = empList.dequeue();
+//            System.out.println(emp.firstName + " "
+//                    + emp.lastName);
         }
     }
 }
 
-class compressedData{
+class CompressedData {
     public byte[] data;
 }
 
-class Employee {
-    public String lastName;
-    public String firstName;
-    public Employee() {
-    }
-    public Employee(String last, String first) {
-        this.lastName = last;
-        this.firstName = first;
-    }
-    public String toString() {
-        return firstName + " " + lastName;
-    }
-}
-
-class HourlyEmployee extends Employee {
-    public double hourlyRate;
-    public HourlyEmployee(String last, String first) {
-        super(last, first);
-    }
-
-
-}
+//class Employee {
+//    public String lastName;
+//    public String firstName;
+//    public Employee() {
+//    }
+//    public Employee(String last, String first) {
+//        this.lastName = last;
+//        this.firstName = first;
+//    }
+//    public String toString() {
+//        return firstName + " " + lastName;
+//    }
+//}
+//
+//class HourlyEmployee extends Employee {
+//    public double hourlyRate;
+//    public HourlyEmployee(String last, String first) {
+//        super(last, first);
+//    }
+//
+//
+//}
