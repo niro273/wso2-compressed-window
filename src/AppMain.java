@@ -3,10 +3,21 @@ import net.jpountz.lz4.LZ4Factory;
 import net.jpountz.lz4.LZ4FastDecompressor;
 import net.jpountz.lz4.LZ4SafeDecompressor;
 
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 
 public class AppMain {
-    public static void main(String[] args) throws UnsupportedEncodingException {
+    public static void main(String[] args) throws IOException {
+
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("text.txt")));
+        StringBuilder sb = new StringBuilder("");
+
+        String line = reader.readLine();
+        while (line != null){
+            sb.append(line);
+            line = reader.readLine();
+        }
+
+        byte[] byteData = line.getBytes();
 
         LZ4Factory factory = LZ4Factory.fastestInstance();
 
