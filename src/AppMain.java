@@ -6,18 +6,27 @@ import net.jpountz.lz4.LZ4SafeDecompressor;
 import java.io.*;
 
 public class AppMain {
+
+    public static final int maxBlockLines = 1000;
+
     public static void main(String[] args) throws IOException {
 
-        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("text.txt")));
-        StringBuilder sb = new StringBuilder("");
+//        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream("text.txt")));
+//        StringBuilder sb = new StringBuilder("");
+//
+//        String line = reader.readLine();
+//
+//        /* Get the first 1000 lines */
+//        int count = 0;
+//
+//        while ((line != null) && (count <maxBlockLines)){
+//            sb.append(line);
+//            line = reader.readLine();
+//            count ++;
+//        }
 
-        String line = reader.readLine();
-        while (line != null){
-            sb.append(line);
-            line = reader.readLine();
-        }
-
-        byte[] byteData = line.getBytes();
+        /* Byte data of 1000 lines */
+//        byte[] data = line.getBytes();
 
         LZ4Factory factory = LZ4Factory.fastestInstance();
 
@@ -38,10 +47,9 @@ public class AppMain {
         byte[] compressed = new byte[maxCompressedLength];
         int compressedLength = compressor.compress(data, 0, decompressedLength, compressed, 0, maxCompressedLength);
 
+
         // decompress data
         // - method 1: when the decompressed length is known
-
-
         LZ4FastDecompressor decompressor = factory.fastDecompressor();
         byte[] restored = new byte[decompressedLength];
         int compressedLength2 = decompressor.decompress(compressed, 0, restored, 0, decompressedLength);
