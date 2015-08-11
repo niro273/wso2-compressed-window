@@ -1,14 +1,14 @@
 import java.util.LinkedList;
 
-public class WindowQueue<compressedData> {
+public class WindowQueue<compressedBlock> {
 
-    private LinkedList<compressedData> list = new LinkedList<compressedData>();
+    private LinkedList<compressedBlock> list = new LinkedList<compressedBlock>();
 
-    public void enqueue(compressedData item) {
+    public void enqueue(compressedBlock item) {
         list.addLast(item);
     }
 
-    public compressedData dequeue() {
+    public compressedBlock dequeue() {
         return list.poll();
     }
     public boolean hasItems() {
@@ -19,7 +19,7 @@ public class WindowQueue<compressedData> {
         return list.size();
     }
 
-    public void addItems(SlidingWindow<? extends compressedData> q) {
+    public void addItems(SlidingWindow<? extends compressedBlock> q) {
         while (q.hasItems())
             list.addLast(q.dequeue());
     }
