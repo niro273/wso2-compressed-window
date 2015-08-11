@@ -19,7 +19,7 @@ public class WindowQueue<compressedBlock> {
         return list.size();
     }
 
-    public void addItems(SlidingWindow<? extends compressedBlock> q) {
+    public void addItems(WindowQueue<? extends compressedBlock> q) {
         while (q.hasItems())
             list.addLast(q.dequeue());
     }

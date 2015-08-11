@@ -31,7 +31,7 @@ public class Test {
         LZ4Factory factory = LZ4Factory.fastestInstance();
 
         /* Get the Data Stream from the folder */
-        byte[] data = "12345345234572".getBytes("UTF-8");
+        byte[] data = "123123123123123123123".getBytes("UTF-8");
         final int decompressedLength = data.length;
 
         /* Get N number of record to compress */

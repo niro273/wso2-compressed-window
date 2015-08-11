@@ -27,6 +27,7 @@ public class AppMain {
         while ((line != null) && (count <maxBlockLines)){
             sb.append(line);
             line = reader.readLine();
+            line = line.replaceAll(",","");
             uncompressedData += line;
             count ++;
         }
@@ -40,7 +41,7 @@ public class AppMain {
         LZ4Compressor compressor = factory.fastCompressor();
         int maxCompressedLength = compressor.maxCompressedLength(decompressedLength);
         byte[] compressed = new byte[maxCompressedLength];
-//        int compressedLength = compressor.compress(data, 0, decompressedLength, compressed, 0, maxCompressedLength);
+        int compressedLength = compressor.compress(data, 0, decompressedLength, compressed, 0, maxCompressedLength);
 
         CompressedBlock firstBlock = new CompressedBlock(compressed , "stream 1");
         slidingWindow.enqueue(firstBlock);
