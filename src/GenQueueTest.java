@@ -27,25 +27,17 @@ class SlidingWindow<compressedData> {
 
 public class GenQueueTest {
     public static void main(String[] args) {
-        SlidingWindow<CompressedData> compressedDataSlidingWindow;
-        compressedDataSlidingWindow = new SlidingWindow<CompressedData>();
+        SlidingWindow<CompressedData> slidingWindow;
+        slidingWindow = new SlidingWindow<CompressedData>();
 
+        slidingWindow.enqueue(new CompressedData("Stream 1"));
+        slidingWindow.enqueue(new CompressedData("Stream 2"));
+        slidingWindow.enqueue(new CompressedData("Stream 3"));
 
-        SlidingWindow<CompressedData> compressedList;
-        compressedList = new SlidingWindow<CompressedData>();
-
-        compressedList.enqueue(new CompressedData("stream1"));
-        compressedList.enqueue(new CompressedData("stream2"));
-        compressedList.enqueue(new CompressedData("stream3"));
-
-        compressedDataSlidingWindow.addItems(compressedList);
-        compressedDataSlidingWindow.enqueue(new CompressedData("Stream 4"));
-        System.out.println("The employees' names are:");
-
-        while (compressedDataSlidingWindow.hasItems()) {
-            CompressedData compressedData = compressedDataSlidingWindow.dequeue();
-            System.out.println(compressedData.streamName);
+        while (slidingWindow.hasItems()) {
+            CompressedData compressedData = slidingWindow.dequeue();
         }
+
     }
 }
 
