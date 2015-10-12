@@ -2,6 +2,7 @@ import net.jpountz.lz4.LZ4Compressor;
 import net.jpountz.lz4.LZ4Factory;
 
 import java.io.*;
+import java.util.Arrays;
 
 public class AppMain {
 
@@ -21,9 +22,9 @@ public class AppMain {
         String line = reader.readLine();
         String uncompressedData = new String();
 
+        /* Do this continiously in a loop */
         /* Get the first 1000 lines */
         int count = 0;
-
         while ((line != null) && (count <maxBlockLines)){
             sb.append(line);
             line = reader.readLine();
@@ -45,6 +46,9 @@ public class AppMain {
 
         CompressedBlock firstBlock = new CompressedBlock(compressed , "stream 1");
         slidingWindow.enqueue(firstBlock);
+
+
+        byte[] truncated = Arrays.copyOf(compressed,compressedLength);
 
     }
 }
